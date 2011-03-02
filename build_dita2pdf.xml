@@ -46,12 +46,22 @@
   <!-- Build XSL-FO output from ditamap -->
   <target name="dita.map.fo"
     description="Build XSL-FO output from ditamap">
-    <condition property="args.xsl"
+    <!-- 
+         Modified 2007/08/21 Antennha House, Inc. 
+     -->
+    <!--condition property="args.xsl"
       value="${dita.script.dir}${file.separator}dita2fo-shell.xsl">
       <not>
         <isset property="args.xsl" />
       </not>
+    </condition-->
+    <condition property="args.xsl"
+      value="${dita.script.dir}${file.separator}dita2fo-shell_axf.xsl">
+      <not>
+        <isset property="args.xsl" />
+      </not>
     </condition>
+    <!-- *************************************** -->
     <dirname file="${dita.temp.dir}${file.separator}${user.input.file}"
       property="dita.merged.dir" />
     <xslt processor="trax" in="${input}"
@@ -75,7 +85,7 @@
 
   <!-- Build PDF from FO using FOP, need to include FOP, Avalon, 
     and Batik relevant jar files in CLASSPATH -->
-  <target name="dita.fo2pdf" if="hasFOP"
+  <!--target name="dita.fo2pdf" if="hasFOP"
     description="Build PDF from FO using FOP">
     <taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop" />
     <antcall target="dita.fo2pdf.userconfig" />
@@ -93,7 +103,69 @@
     <fop format="application/pdf" basedir="${input}" fofile="${input}"
       outfile="${output}" messagelevel="info">
     </fop>
-  </target>
+  </target-->
+
+<!-- 
+    Added 2007/08/21 Antennha House, Inc. 
+    Build PDF from FO using XSL Formatter, needs to set environment
+    variable AXF_DIR as XSL Formatter install directory.
+    If you use option setting file for XSL Formatter, it also 
+    needs to set environment variable AXF_OPT.
+ -->
+<condition property="has.axf.option">
+    <and>
+        <available file="${env.AXF_OPT}"/>
+        <not>
+            <equals arg1="${env.AXF_OPT}" arg2=""/>
+        </not>
+    </and>
+</condition>
+
+<target name="dita.fo2pdf" depends="dita.fo2pdf.nooption, dita.fo2pdf.option"/>
+
+<target name="dita.fo2pdf.nooption" unless="has.axf.option">
+    <exec executable="${env.AXF_DIR}/run.sh" os="Linux" logerror="true" failonerror="true">
+        <arg value="-d"/>
+        <arg value="${input}"/>
+        <arg value="-o"/>
+        <arg value="${output}"/>
+        <arg value="-extlevel"/>
+        <arg value="4"/>
+    </exec>
+    <exec executable="${env.AXF_DIR}/AHFCmd.exe" os="Windows XP, Windows 2000" logerror="true" failonerror="true">
+        <arg value="-d"/>
+        <arg value="${input}"/>
+        <arg value="-o"/>
+        <arg value="${output}"/>
+        <arg value="-extlevel"/>
+        <arg value="4"/>
+    </exec>
+</target>
+
+<target name="dita.fo2pdf.option" if="has.axf.option">
+    <exec executable="${env.AXF_DIR}/run.sh" os="Linux" logerror="true" failonerror="true">
+        <arg value="-d"/>
+        <arg value="${input}"/>
+        <arg value="-o"/>
+        <arg value="${output}"/>
+        <arg value="-extlevel"/>
+        <arg value="4"/>
+        <arg value="-i"/>
+        <arg value="${env.AXF_OPT}"/>
+    </exec>
+    <exec executable="${env.AXF_DIR}/AHFCmd.exe" os="Windows XP, Windows 2000" logerror="true" failonerror="true">
+        <arg value="-d"/>
+        <arg value="${input}"/>
+        <arg value="-o"/>
+        <arg value="${output}"/>
+        <arg value="-extlevel"/>
+        <arg value="4"/>
+        <arg value="-i"/>
+        <arg value="${env.AXF_OPT}"/>
+    </exec>
+</target>
+<!-- ************************************* -->
+
 
   <!-- Build XSL-FO output from dita topic -->
   <target name="dita.topic.fo"
