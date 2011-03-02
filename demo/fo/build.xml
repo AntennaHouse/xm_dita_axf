@@ -157,18 +157,6 @@ with those set forth herein.
         <dita-version documentPath="${inputFile}"/>
       <echo message="DITA VER = ${ws.runtime.publishing.map.dita.version}" />
 
-      <condition property="temp.transformation.file" value="${xsl.fo.dir}/topic2fo_shell_1.0.xsl">
-        <equals arg1="${ws.runtime.publishing.map.dita.version}" arg2="1.0"/>
-      </condition>
-      <echo message="1... ${temp.transformation.file}"/>
-
-      <condition property="temp.transformation.file" value="${xsl.fo.dir}/topic2fo_shell.xsl">
-        <not>
-          <isset property="temp.transformation.file"/>
-        </not>
-      </condition>
-   
-
 
       <!--      
     	<condition property="temp.transformation.file" value="${xsl.fo.dir}/topic2fo_shell_1.0.xsl">
@@ -182,12 +170,27 @@ with those set forth herein.
             <not>
                 <isset property="temp.transformation.file"/>
             </not>
+        </condition-->
+        
+        <!-- 
+            Added 2007/10/10 Antennha House, Inc. 
+         -->
+    	<condition property="temp.transformation.file" value="${xsl.fo.dir}/topic2fo_shell_1.0_axf.xsl">
+    		<or>
+	            <equals arg1="${ws.runtime.publishing.map.dita.version}" arg2="1.0"/>
+	            <equals arg1="${ws.runtime.publishing.map.dita.version}" arg2="1.1"/>
+			</or>
         </condition>
--->        
       <echo message="2... ${temp.transformation.file}"/>
 
-      <echo message="index-preprocess started"/>
-      <index-preprocess
+        <condition property="temp.transformation.file" value="${xsl.fo.dir}/topic2fo_shell_axf.xsl">
+            <not>
+                <isset property="temp.transformation.file"/>
+            </not>
+        </condition>
+        <!-- ************************************* -->
+    	
+        <index-preprocess
             input="${inputFile}"
             output="${buildDir}/stage1.xml"
             indexConfig="${cfg.dir}/common/index/${document.locale}.xml"
@@ -267,7 +270,7 @@ with those set forth herein.
 -->
     </target>
 
-    <target name="transform.fo2pdf">
+    <!--target name="transform.fo2pdf">
         <antcall target="transform.fo2pdf.xep">
             <param name="inputFile" value="${dita.map.output.dir}/topic.fo"/>
             <param name="outputFile" value="${outputFile}"/>
@@ -308,7 +311,65 @@ with those set forth herein.
 	    <fop format="application/pdf" fofile="${inputFile}"
 	      outfile="${outputFile}" messagelevel="info">
 	    </fop>
-	</target>
+	</target-->
+
+    <!-- 
+        Added 2007/10/10 Antennha House, Inc. 
+     -->
+    <condition property="has.axf.option">
+        <and>
+            <available file="${env.AXF_OPT}"/>
+            <not>
+                <equals arg1="${env.AXF_OPT}" arg2=""/>
+            </not>
+        </and>
+    </condition>
+    
+    <target name="transform.fo2pdf" depends="transform.fo2pdf.nooption, transform.fo2pdf.option"/>
+    
+    <target name="transform.fo2pdf.nooption" unless="has.axf.option">
+        <exec executable="${env.AXF_DIR}/run.sh" os="Linux" resultproperty="errCode" logerror="true" failonerror="true">
+            <arg value="-d"/>
+            <arg value="${inputFile}"/>
+            <arg value="-o"/>
+            <arg value="${outputFile}"/>
+            <arg value="-extlevel"/>
+            <arg value="4"/>
+        </exec>
+        <exec executable="${env.AXF_DIR}/AHFCmd.exe" os="Windows XP, Windows 2000" resultproperty="errCode" logerror="true" failonerror="true">
+            <arg value="-d"/>
+            <arg value="${inputFile}"/>
+            <arg value="-o"/>
+            <arg value="${outputFile}"/>
+            <arg value="-extlevel"/>
+            <arg value="4"/>
+        </exec>
+    </target>
+
+    <target name="transform.fo2pdf.option" if="has.axf.option">
+        <exec executable="${env.AXF_DIR}/run.sh" os="Linux" resultproperty="errCode" logerror="true" failonerror="true">
+            <arg value="-d"/>
+            <arg value="${inputFile}"/>
+            <arg value="-o"/>
+            <arg value="${outputFile}"/>
+            <arg value="-extlevel"/>
+            <arg value="4"/>
+            <arg value="-i"/>
+            <arg value="${env.AXF_OPT}"/>
+        </exec>
+        <exec executable="${env.AXF_DIR}/AHFCmd.exe" os="Windows XP, Windows 2000" resultproperty="errCode" logerror="true" failonerror="true">
+            <arg value="-d"/>
+            <arg value="${inputFile}"/>
+            <arg value="-o"/>
+            <arg value="${outputFile}"/>
+            <arg value="-extlevel"/>
+            <arg value="4"/>
+            <arg value="-i"/>
+            <arg value="${env.AXF_OPT}"/>
+        </exec>
+    </target>
+    <!-- ************************************* -->
+
 
     <target name="copyCoreArtwork">
         <copy todir="${coreArtworkDestinationDir}/Configuration/OpenTopic"

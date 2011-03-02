@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!-- 
-Copyright © 2004-2006 by Idiom Technologies, Inc. All rights reserved. 
+Copyright © 2004-2005 by Idiom Technologies, Inc. All rights reserved. 
 IDIOM is a registered trademark of Idiom Technologies, Inc. and WORLDSERVER
 and WORLDSTART are trademarks of Idiom Technologies, Inc. All other 
 trademarks are the property of their respective owners. 
@@ -26,9 +26,6 @@ Technologies, Inc. as a result of this transaction.
 These terms and conditions supersede the terms and conditions in any
 licensing agreement to the extent that such terms and conditions conflict
 with those set forth herein.
-
-This file is part of the DITA Open Toolkit project hosted on Sourceforge.net. 
-See the accompanying license.txt file for applicable licenses.
 -->
 
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
@@ -39,8 +36,13 @@ See the accompanying license.txt file for applicable licenses.
 
     <uri name="cfg:xhtml/xsl/custom.xsl" uri="xhtml/xsl/custom.xsl"/>
 
-    <uri name="cfg:fo/layout-masters.xml" uri="fo/layout-masters.xml"/>
-
+    <!--<uri name="cfg:fo/layout-masters.xml" uri="fo/layout-masters.xml"/>
+    -->
+    <!-- 
+        Added 2006/09/26 Antennha House, Inc. 
+    -->
+    <uri name="cfg:fo/layout-masters.xml" uri="fo/layout-masters_axf.xml"/>
+    
     <uri name="cfg:fo/font-mappings.xml" uri="fo/font-mappings.xml"/>
 
     <uri name="cfg:fo/i18n/de_DE.xml" uri="fo/i18n/de_DE.xml"/>
