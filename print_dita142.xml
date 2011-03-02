@@ -1,0 +1,1849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE print SYSTEM "print_config.dtd">
+<print>
+
+  <general_info>
+
+    <title>General information for printing configuration</title>
+
+    <general_line></general_line>
+
+    <general_line>BAT files parameters:</general_line>
+
+    <general_line> %1 path to bat file that sets printing configuration variables:</general_line>
+    <general_line>LOGFILE_DIR - path to log dir</general_line>
+    <general_line>DITA_OT_DIR - XMetaL DITA SDK path</general_line>
+    <general_line>XMETAL_DITA_SDK_DRIVE </general_line>
+
+    <general_line> IN_FILE_DIR_BACK_SLASH input directory</general_line>
+
+    <general_line>IN_FILE_DIR </general_line>
+    <general_line>IN_FILE_NAME_ONLY - name without extension</general_line>
+    <general_line>IN_FILE_EXT - .xml, .ditamap etc</general_line>
+    <general_line> OUT_FILE_DIR_BACK_SLASH output directory</general_line>
+
+    <general_line>OUT_FILE_DIR </general_line>
+    <general_line>OUT_FILE_NAME_ONLY - name without extension</general_line>
+    <general_line>OUT_FILE_EXT - .xml, .ditamap etc</general_line>
+    <general_line>DITAVAL_PATH - full path to ditaval file</general_line>
+
+    <general_line>DITAVAL_PATH_BACK_SLASH - full path to ditaval file</general_line>
+    <general_line>DSDK_PARAM_ALL  - combines all params with prefix DSDK_PARAM_&lt;param name&gt; to the one line /&lt;param name&gt;:&lt;param value&gt;</general_line>
+    <general_line>IN_ORIGINAL_FILE_NAME_ONLY - a real name of input file (not temporary copy)</general_line>
+    <general_line>
+    </general_line>
+    <general_line>Content of "param" branches will be concatenated with content of parent "bat_line" tag in a resulting bat file.</general_line>
+
+    <general_line></general_line>
+
+    <general_line>XMetaL instructions:</general_line>
+    <general_line>cmd_disable_xmetal_preprocessing</general_line>
+
+    <general_line>cmd_generated_file_extension - required</general_line>
+
+    <general_line>cmd_disable_xmetal_merging</general_line>
+
+    <general_line>cmd_alternative_topic_merge_xslt - topicmerge.xsl is default</general_line>
+
+    <general_line>cmd_always_open_log</general_line>
+
+    <general_line>  cmd_disable_config - don't show config in the list of available configs</general_line>
+
+    <general_line>cmd_set_filter - this is alternative location of ditaval file if it wasn't selected in "print dialog"</general_line>
+
+    <general_line>cmd_default_config - XMetaL  sets this value when "default configuration" is selected</general_line>
+
+    <general_line>cmd_open_with - external application for opening and viewing. "SYSTEM_DEFAULT" forces to use system default settings</general_line>
+
+    <general_line>cmd_enable_xmetal_pdf_index</general_line>
+
+    <general_line>cmd_alternative_fop_path</general_line>
+
+    <general_line>cmd_preserve_temp_files - all temporary files are copied to \Documents and Settings\&lt;user name&gt;\Local Settings\Temp\XMetaL\log </general_line>
+
+    <general_line>cmd_disable_map_print  - should disable map printing for current configuration (not implemented)</general_line>
+
+    <general_line>cmd_disable_topic_print - should disable topic printing for current configuration (not implemented)</general_line>
+    <general_line>cmd_check_logfile_for_failure - if the name of output file is unknown - force to check logfile for "failure" string (not implemented)</general_line>
+    <general_line>
+      cmd_extended_debug_info
+      - 0 no log file (actually we always have it) , 1 - regular logfile, 2 - we add /debug instruction to DSDK_PARAM_ALL veriavble
+    </general_line>
+    <general_line>cmd_xft_options_form - name of the xft form for options dialog, should be in the Application\Forms directory.</general_line>
+    <general_line>cmd_preview_in_xmetal - if html or pdf try to open result in xmetal </general_line>
+    <general_line>cmd_log_succeeded_text - check log file for string if found, build is succeeded</general_line>
+    <general_line>cmd_log_failed_text  - check log file for string if found, build is failed</general_line>
+    <general_line>cmd_output_as_dir - don't check/ask  for file name as output. "Open With" will open folder</general_line>
+    <general_line> </general_line>
+    <general_line>output directory:  DSDK_PARAM_outdir</general_line>
+    <general_line> 1) is taken from GLOBALS section from config file</general_line>
+    <general_line>2) is overwritten by particular configuration or via output dialog</general_line>
+    <general_line>3) if no information provided source file directory is output directory</general_line>
+    <general_line>
+    </general_line>
+
+    <general_line></general_line>
+
+  </general_info>
+
+  <globals>
+
+    <globals_title>XMetaL printing global settings for all configurations in this file</globals_title>
+
+    <instructions_table>
+
+      <instruction id="200">
+        <name xm_cmd="0">ANT_HOME</name>
+        <value>%XMETAL_SHARED%\apache-ant-1.6.5</value>
+      </instruction>
+
+      <instruction id="200">
+        <name xm_cmd="0">DITA_OT_DIR</name>
+        <value>%XMETAL_SHARED%\DITA_OT</value>
+      </instruction>
+      <instruction id="200">
+        <name xm_cmd="0">PATH</name>
+        <value>%PATH%;%ANT_HOME%\bin</value>
+      </instruction>
+      <instruction id="200">
+        <name xm_cmd="0">JAVA_HOME</name>
+        <value>%XMETAL_SHARED%\jre1.5.0 </value>
+      </instruction>
+      <instruction id="200">
+        <name xm_cmd="0">CLASSPATH</name>
+        <value>%DITA_OT_DIR%\lib\avalon-framework-cvs-20020806.jar;%DITA_OT_DIR%\lib\batik.jar;%DITA_OT_DIR%\lib\dost.jar;%DITA_OT_DIR%\lib\fop.jar;%DITA_OT_DIR%\lib\icu4j.jar;%DITA_OT_DIR%\lib\resolver.jar;%DITA_OT_DIR%\lib\serializer.jar;%DITA_OT_DIR%\lib\xalan.jar;%DITA_OT_DIR%\lib\xercesImpl.jar;%DITA_OT_DIR%\lib\xml-apis.jar;%DITA_OT_DIR%\lib\xsltc.jar;%DITA_OT_DIR%\lib\xm_util.jar;</value>
+      </instruction>
+      <instruction id="123">
+        <name xm_cmd="1">cmd_open_with</name>
+        <value>SYSTEM_DEFAULT</value>
+      </instruction>
+      <instruction id="200">
+        <name xm_cmd="0">ANT_PARAM_dita.temp.dir</name>
+        <value>%DITA_OT_DIR%\temp</value>
+      </instruction>
+      <instruction id="200">
+        <name xm_cmd="0">ANT_PARAM_dita.dir</name>
+        <value>%DITA_OT_DIR%</value>
+      </instruction>
+      
+    </instructions_table>
+
+  </globals>
+
+
+  <config id="DITA142_1B9FF196523E459683C958FA9E31EEEE">
+
+    <config_title>
+      Multiple XHTML files
+    </config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>HTML</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>xhtml</value>
+      </instruction>
+      <instruction id="131">
+        <name xm_cmd="1">cmd_xft_options_form</name>
+        <value>AddDlvTypeXHTML.xft</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>multiple_html_out</value>
+      </instruction>
+    <instruction id="100"><name xm_cmd="0">DSDK_PARAM_generateouter</name><value>"3"</value></instruction></instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+      <bat_line>
+        call %1
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (</bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line multiline_cmd="1">
+        "%JAVA_HOME%/bin/java"
+      </bat_line>
+      <param>%COMMAND_LINE_PARAM_ALL%</param>
+      <param>-jar lib/dost.jar </param>
+      <param>/i:"%DITA_IN_FILE%" </param>
+
+      <param>%DSDK_PARAM_ALL%</param>
+      <bat_line></bat_line>
+      <bat_line> set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%.html</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF NOT EXIST "%SRC_FILE%" (</bat_line>
+      <bat_line>	set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\index.html</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I NOT "%DEST_FILE%" == "%SRC_FILE%" (</bat_line>
+      <bat_line>
+        move /Y "%SRC_FILE%" "%DEST_FILE%"
+      </bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_xhtml.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_xhtml.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_xhtml.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+
+  <config id="DITA142_59B2E69BA7874918BC08094633D5D221">
+
+    <config_title>PDF via FO with default processing</config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>PDF</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>pdf</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_foimgext</name>
+        <value>gif</value>
+      </instruction>
+      <instruction id="131">
+        <name xm_cmd="1">cmd_xft_options_form</name>
+        <value>AddDlvTypePDF.xft</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>pdf_out</value>
+      </instruction>
+    <instruction id="100"><name xm_cmd="0">DSDK_PARAM_generateouter</name><value>3</value></instruction></instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+
+      <bat_line>
+        call %1
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (
+
+      </bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line multiline_cmd="1">
+        "%JAVA_HOME%/bin/java"
+      </bat_line>
+      <param>%COMMAND_LINE_PARAM_ALL%</param>
+      <param>-jar lib/dost.jar </param>
+      <param>/i:"%DITA_IN_FILE%" </param>
+
+      <param>%DSDK_PARAM_ALL%</param>
+      <bat_line></bat_line>
+      <bat_line>set FO_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%.fo</bat_line>
+      <bat_line>IF EXIST "%FO_FILE%" (</bat_line>
+      <bat_line> pushd  %XMETAL_SHARED%\fop-0.20.5</bat_line>
+
+	  <!--
+      <bat_line multiline_cmd="1">call fop.bat</bat_line>
+
+      <param>"%OUT_FILE_DIR%%IN_FILE_NAME_ONLY%.fo"</param>
+
+      <param>"%OUT_FILE_DIR%%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%"</param>
+
+      <bat_line> REM DEL /F /Q "%FO_FILE%"</bat_line>
+	  -->
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line></bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_951F84E9BE764A75961742E0BB8E1CC6">
+
+    <config_title>
+      HTML Help (CHM)
+    </config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>CHM</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>htmlhelp</value>
+      </instruction>
+      <instruction id="128">
+        <name xm_cmd="1">cmd_disable_topic_print</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>chm_out</value>
+      </instruction>
+      <instruction id="131">
+        <name xm_cmd="1">cmd_xft_options_form</name>
+        <value>AddDlvTypeCHM.xft</value>
+      </instruction>
+      <instruction id="148">
+        <name xm_cmd="1">cmd_recompile_chm_in_xmetal</name>
+        <value>yes</value>
+      </instruction>
+    <instruction id="100"><name xm_cmd="0">ANT_PARAM_generate.copy.outer</name><value>"3"</value></instruction></instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+
+
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        call %1
+
+      </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (
+
+      </bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>) </bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>IF "%cmd_extended_debug_info%" == "yes" (</bat_line>
+      <bat_line>  SET RDEBUG=-d</bat_line>
+
+      <bat_line>) ELSE (</bat_line>
+      <bat_line>SET RDEBUG=</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>call ant  dita2htmlhelp -Dargs.input="%DITA_IN_FILE%" -Doutput.dir="%DSDK_PARAM_outdir%"  %ANT_PARAM_ALL% %RDEBUG%</bat_line>
+
+      <bat_line>
+      </bat_line>
+      <bat_line> set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%.chm</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I NOT "%DEST_FILE%" == "%SRC_FILE%" (</bat_line>
+      <bat_line>
+        DEL /F /Q "%DEST_FILE%"
+      </bat_line>
+      <bat_line>
+        move /Y "%SRC_FILE%" "%DEST_FILE%"
+      </bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_htmlhelp.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_htmlhelp.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_htmlhelp.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_ECF4A8BA0A9E48CFAFF8B37EB7DA3ECB">
+
+    <config_title>
+      JavaHelp
+    </config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>HS</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>javahelp</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>javahelp_out</value>
+      </instruction>
+      <instruction id="128">
+        <name xm_cmd="1">cmd_disable_topic_print</name>
+        <value>yes</value>
+      </instruction>
+    <instruction id="100"><name xm_cmd="0">ANT_PARAM_generate.copy.outer</name><value>"3"</value></instruction></instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+      <bat_line>
+        call %1
+
+      </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (
+
+      </bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>) </bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>IF "%cmd_extended_debug_info%" == "yes" (</bat_line>
+      <bat_line>  SET RDEBUG=-d</bat_line>
+
+      <bat_line>) ELSE (</bat_line>
+      <bat_line>SET RDEBUG=</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>call ant  dita2javahelp -Dargs.input="%DITA_IN_FILE%" -Doutput.dir="%DSDK_PARAM_outdir%"  %ANT_PARAM_ALL% %RDEBUG%</bat_line><bat_line></bat_line>
+      <bat_line> set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%_helpset.hs</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I NOT "%DEST_FILE%" == "%SRC_FILE%" (</bat_line>
+      <bat_line>
+        DEL /F /Q "%DEST_FILE%"
+      </bat_line>
+      <bat_line>
+        move /Y "%SRC_FILE%" "%DEST_FILE%"
+      </bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_javahelp.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_javahelp.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_javahelp.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_DA386267C1FE49EAAF87D3606A48343C">
+
+    <config_title>
+      Eclipse Help
+    </config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>xml</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>eclipsehelp</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>eclipse_help_out</value>
+      </instruction>
+      <instruction id="128">
+        <name xm_cmd="1">cmd_disable_topic_print</name>
+        <value>yes</value>
+      </instruction>
+    </instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        call %1
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>echo %cmd_generated_file_extension%</bat_line>
+      <bat_line>echo %cmd_disable_xmetal_preprocessing%</bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (</bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+      <bat_line></bat_line>
+      <bat_line multiline_cmd="1">
+        "%JAVA_HOME%/bin/java"
+      </bat_line>
+      <param>%COMMAND_LINE_PARAM_ALL%</param>
+      <param>-jar lib/dost.jar </param>
+      <param>/i:"%DITA_IN_FILE%" </param>
+
+      <param>%DSDK_PARAM_ALL%</param>
+      <bat_line></bat_line>
+      <bat_line> set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%.xml</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I NOT "%DEST_FILE%" == "%SRC_FILE%" (</bat_line>
+      <bat_line>
+        DEL /F /Q "%DEST_FILE%"
+      </bat_line>
+      <bat_line>
+        move /Y "%SRC_FILE%" "%DEST_FILE%"
+      </bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_eclipsehelp.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_eclipsehelp.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_eclipsehelp.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_E86DF6B83DEA40ACBBB1B4BB75A65AA8">
+
+    <config_title>
+      Eclipse Content
+    </config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>xml</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>eclipsecontent</value>
+      </instruction>
+      <instruction id="128">
+        <name xm_cmd="1">cmd_disable_topic_print</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="135">
+        <name xm_cmd="1">cmd_output_as_dir</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="133">
+        <name xm_cmd="1">cmd_log_succeeded_text</name>
+        <value>BUILD SUCCESSFUL</value>
+      </instruction>
+      <instruction id="134">
+        <name xm_cmd="1">cmd_log_failed_text</name>
+        <value>BUILD FAILED</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>eclipse_content_out</value>
+      </instruction>
+    </instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        call %1
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line> echo *** %cmd_generated_file_extension% ***</bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (</bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+      <bat_line></bat_line>
+      <bat_line multiline_cmd="1">
+        "%JAVA_HOME%/bin/java"
+      </bat_line>
+      <param>%COMMAND_LINE_PARAM_ALL%</param>
+      <param>-jar lib/dost.jar </param>
+      <param>/i:"%DITA_IN_FILE%" </param>
+
+      <param>%DSDK_PARAM_ALL%</param>
+      <bat_line></bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_eclipsecontent.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_eclipsecontent.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_eclipsecontent.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_BE795D162A554964B1341B21D1EA5062">
+
+    <config_title>
+      The Text Processor for Typesetters (troff)
+    </config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>cli</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="135">
+        <name xm_cmd="1">cmd_output_as_dir</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="128">
+        <name xm_cmd="1">cmd_disable_topic_print</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="133">
+        <name xm_cmd="1">cmd_log_succeeded_text</name>
+        <value>BUILD SUCCESSFUL</value>
+      </instruction>
+      <instruction id="134">
+        <name xm_cmd="1">cmd_log_failed_text</name>
+        <value>BUILD FAILED</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>troff</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>troff_out</value>
+      </instruction>
+    </instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+      <bat_line>
+        call %1
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (</bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+      <bat_line></bat_line>
+      <bat_line multiline_cmd="1">
+        "%JAVA_HOME%/bin/java"
+      </bat_line>
+      <param>%COMMAND_LINE_PARAM_ALL%</param>
+      <param>-jar lib/dost.jar </param>
+      <param>/i:"%DITA_IN_FILE%" </param>
+
+      <param>%DSDK_PARAM_ALL%</param>
+      <bat_line></bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_troff.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_troff.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_troff.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_88515C8DB0924167868DD215F23CBA77">
+
+    <config_title>
+      Rich Text Format (RTF)
+    </config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>rtf</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>wordrtf</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>rtf_out</value>
+      </instruction>
+    </instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+      <bat_line>
+        call %1
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (</bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+      <bat_line></bat_line>
+      <bat_line multiline_cmd="1">
+        "%JAVA_HOME%/bin/java"
+      </bat_line>
+      <param>%COMMAND_LINE_PARAM_ALL%</param>
+      <param>-jar lib/dost.jar </param>
+      <param>/i:"%DITA_IN_FILE%" </param>
+
+      <param>%DSDK_PARAM_ALL%</param>
+      <bat_line></bat_line>
+      <bat_line> set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%.rtf</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I NOT "%DEST_FILE%" == "%SRC_FILE%" (</bat_line>
+      <bat_line>
+        DEL /F /Q "%DEST_FILE%"
+      </bat_line>
+      <bat_line>
+        move /Y "%SRC_FILE%" "%DEST_FILE%"
+      </bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_wordrtf.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_wordrtf.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_wordrtf.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_EA5F9B3796FC4F80827C35B08BE9AD71">
+
+    <config_title>
+      DocBook
+    </config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>xml</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>docbook</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>docbook_out</value>
+      </instruction>
+    </instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+      <bat_line>
+        call %1
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (</bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+      <bat_line></bat_line>
+      <bat_line multiline_cmd="1">
+        "%JAVA_HOME%/bin/java"
+      </bat_line>
+      <param>%COMMAND_LINE_PARAM_ALL%</param>
+      <param>-jar lib/dost.jar </param>
+      <param>/i:"%DITA_IN_FILE%" </param>
+
+      <param>%DSDK_PARAM_ALL%</param>
+      <bat_line></bat_line>
+      <bat_line> set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%.xml</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I NOT "%DEST_FILE%" == "%SRC_FILE%" (</bat_line>
+      <bat_line>
+        DEL /F /Q "%DEST_FILE%"
+      </bat_line>
+      <bat_line>
+        copy /Y "%SRC_FILE%" "%DEST_FILE%"
+      </bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_docbook.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_docbook.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_docbook.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_BBDC8A1A630841B09D4233341D5BEFDF">
+
+    <config_title>
+      Structured FrameMaker
+    </config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>XML</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+
+
+
+      <instruction id="131">
+        <name xm_cmd="1">cmd_xft_options_form</name>
+        <value>AddDlvTypeFRM.xft</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>structured_framemaker_out</value>
+      </instruction>
+      <instruction id="133">
+        <name xm_cmd="1">cmd_log_succeeded_text</name>
+        <value>BUILD SUCCESSFUL</value>
+      </instruction>
+      <instruction id="134">
+        <name xm_cmd="1">cmd_log_failed_text</name>
+        <value>BUILD FAILED</value>
+      </instruction>
+      <instruction id="138">
+        <name xm_cmd="1">cmd_succeed_dialog_text</name>
+        <value>XMetaL preprocessing has finished successfully. FrameMaker will be launched for viewing results.</value>
+      </instruction>
+      <instruction id="135">
+        <name xm_cmd="1">cmd_output_as_dir</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>fmxml</value>
+      </instruction>
+    </instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        call %1
+
+      </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line> IF "%FRM_TEMPLATE_PATH%" == "" (</bat_line>
+      <bat_line>  SET TEMPLATE_PATH=%XMETAL_CUSTOM_FILES_FOLDER%\template_styles.fm</bat_line>
+
+      <bat_line> ) ELSE ( </bat_line>
+      <bat_line>  SET TEMPLATE_PATH="%FRM_TEMPLATE_PATH%"</bat_line>
+      <bat_line>
+        )
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>COPY /Y %TEMPLATE_PATH% "%DITA_OT_DIR%"\demo\FrameMaker_adapter\fm_templates\template_styles.fm</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (
+
+      </bat_line>
+      <bat_line>SET CUSTOM_DITAVAL=-Ddita.input.valfile="%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>) ELSE (</bat_line>
+      <bat_line>SET CUSTOM_DITAVAL=</bat_line>
+      <bat_line>)</bat_line>
+
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DITA_IN_FILE=%IN_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%%IN_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF "%cmd_extended_debug_info%" == "yes" (</bat_line>
+      <bat_line>  SET COMMAND_LINE_PARAM_ALL=%COMMAND_LINE_PARAM_ALL% -d -v</bat_line>
+
+      <bat_line> ) </bat_line>
+      <bat_line></bat_line>
+      <bat_line>ant %COMMAND_LINE_PARAM_ALL% -Dargs.input="%DITA_IN_FILE%" -Doutput.dir="%DSDK_PARAM_outdir%" %FRM_ANT_PARAM_ALL% %CUSTOM_DITAVAL% -DFrameMakerExecutable="%FMPATH%"  dita2fmxml</bat_line>
+      <bat_line></bat_line>
+      <bat_line></bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_D0E28E1D521345C2A900522959DC1216">
+    <config_title>Book via RenderX</config_title>
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+    <instructions_table>
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>PDF</value>
+      </instruction>
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>pdf_out</value>
+      </instruction>
+      <instruction id="133">
+        <name xm_cmd="1">cmd_log_succeeded_text</name>
+        <value>BUILD SUCCESSFUL</value>
+      </instruction>
+      <instruction id="139">
+        <name xm_cmd="1">cmd_failed_dialog_text</name>
+        <value>BUILD FAILED</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>pdf2</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">COMMENT_CLASSPATH</name>
+        <value>%CLASSPATH%;%XMETAL_SHARED%\saxon\saxon.jar;</value>
+      </instruction>
+      <instruction id="131">
+        <name xm_cmd="1">cmd_xft_options_form</name>
+        <value>AddDlvTypePDFRX.xft</value>
+      </instruction>
+    <instruction id="100"><name xm_cmd="0">DSDK_PARAM_generateouter</name><value>"3"</value></instruction></instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+      <bat_line>
+        call %1
+
+      </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (
+
+      </bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+      <bat_line></bat_line>
+      <bat_line multiline_cmd="1">
+        "%JAVA_HOME%/bin/java"
+      </bat_line>
+      <param>%COMMAND_LINE_PARAM_ALL%</param>
+      <param>-jar lib/dost.jar </param>
+      <param>/i:"%DITA_IN_FILE%" </param>
+
+      <param>%DSDK_PARAM_ALL%</param>
+
+      <bat_line> </bat_line>
+      <bat_line>set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%.pdf</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line> IF /I NOT "%DEST_FILE%" == "%SRC_FILE%" (</bat_line>
+      <bat_line>
+        DEL /F /Q "%DEST_FILE%"
+      </bat_line>
+      <bat_line>
+        move /Y "%SRC_FILE%" "%DEST_FILE%"
+      </bat_line>
+      <bat_line> )</bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf2.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf2.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf2.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line> </bat_line>
+      <bat_line> </bat_line>
+    </bat_content>
+  </config>
+  <config id="DITA142_81328091DBD3488AB128F3E2E556C826">
+
+    <config_title>Single HTML file</config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>HTML</value>
+      </instruction>
+
+
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>xhtmls</value>
+      </instruction>
+      <instruction id="131">
+        <name xm_cmd="1">cmd_xft_options_form</name>
+        <value>AddDlvTypeXHTML.xft</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>shtml_out</value>
+      </instruction>
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">ANT_PARAM_generate.copy.outer</name>
+        <value>"3"</value>
+      </instruction>
+    </instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        call %1
+
+      </bat_line>
+      <bat_line></bat_line>
+
+      <bat_line>
+        IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (
+      </bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%
+
+      </bat_line>
+
+      <bat_line>IF "%cmd_extended_debug_info%" == "yes" (</bat_line>
+      <bat_line>  SET RDEBUG=-d</bat_line>
+
+      <bat_line>) ELSE (</bat_line>
+      <bat_line>SET RDEBUG=</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>call ant  dita2xhtmls -Dargs.input="%DITA_IN_FILE%" -Doutput.dir="%DSDK_PARAM_outdir%"  %ANT_PARAM_ALL% %RDEBUG%</bat_line>
+
+      <bat_line></bat_line>
+
+      <bat_line>
+        set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%.html
+      </bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I NOT "%DEST_FILE%" == "%SRC_FILE%" (</bat_line>
+      <bat_line>
+        move /Y "%SRC_FILE%" "%DEST_FILE%"
+      </bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_xhtmls.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_xhtmls.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_xhtmls.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_6932AABE17224903A3DFB0478DAD2F2B">
+
+    <config_title>XMetaL Enhanced PDF via RenderX XEP</config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>PDF</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+
+
+
+      <instruction id="131">
+        <name xm_cmd="1">cmd_xft_options_form</name>
+        <value>AddDlvTypePDFRX.xft</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>pdf_out</value>
+      </instruction>
+      <instruction id="133">
+        <name xm_cmd="1">cmd_log_succeeded_text</name>
+        <value>BUILD SUCCESSFUL</value>
+      </instruction>
+      <instruction id="134">
+        <name xm_cmd="1">cmd_log_failed_text</name>
+        <value>BUILD FAILED</value>
+      </instruction>
+
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>pdf3</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+    <instruction id="100"><name xm_cmd="0">ANT_PARAM_generate.copy.outer</name><value>"3"</value></instruction></instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        call %1
+
+      </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (
+
+      </bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>) </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+
+      <bat_line> </bat_line>
+      <bat_line>IF "%RX_CUSTOM_DIR%" == "" (</bat_line>
+      <bat_line>  SET CUSTOMIZATION_DIR=</bat_line>
+
+      <bat_line> ) ELSE ( </bat_line>
+      <bat_line>  SET CUSTOMIZATION_DIR=-Dcustomization.dir="%RX_CUSTOM_DIR%"</bat_line>
+      <bat_line>
+        )
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF "%cmd_extended_debug_info%" == "yes" (</bat_line>
+      <bat_line>  SET RDEBUG=-d</bat_line>
+
+      <bat_line>) ELSE (</bat_line>
+      <bat_line>SET RDEBUG=</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>call ant %COMMAND_LINE_PARAM_ALL% dita2pdf3 %RDEBUG% -Dargs.input="%DITA_IN_FILE%" -Doutput.dir="%DSDK_PARAM_outdir%"    %CUSTOMIZATION_DIR%    -Dargs.xmfo.formtter=xep  %ANT_PARAM_ALL% %RX_ANY%</bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>echo on</bat_line>
+      <bat_line></bat_line>
+      <bat_line>set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%.pdf</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line> IF /I NOT "%DEST_FILE%" == "%SRC_FILE%" (</bat_line>
+      <bat_line>
+        DEL /F /Q "%DEST_FILE%"
+      </bat_line>
+      <bat_line>
+        move /Y "%SRC_FILE%" "%DEST_FILE%"
+      </bat_line>
+      <bat_line> )</bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf3.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf3.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf3.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_antenna_house">
+
+    <config_title>XMetaL Enhanced PDF via Antenna House XSL Formatter </config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>PDF</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+
+
+
+      <instruction id="131">
+        <name xm_cmd="1">cmd_xft_options_form</name>
+        <value>AddDlvTypePDFRX.xft</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>pdf_out</value>
+      </instruction>
+      <instruction id="133">
+        <name xm_cmd="1">cmd_log_succeeded_text</name>
+        <value>BUILD SUCCESSFUL</value>
+      </instruction>
+      <instruction id="134">
+        <name xm_cmd="1">cmd_log_failed_text</name>
+        <value>BUILD FAILED</value>
+      </instruction>
+
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>pdf3</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+    <instruction id="100"><name xm_cmd="0">ANT_PARAM_generate.copy.outer</name><value>"3"</value></instruction></instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        call %1
+
+      </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (
+
+      </bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>) </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+
+      <bat_line> </bat_line>
+      <bat_line>IF "%RX_CUSTOM_DIR%" == "" (</bat_line>
+      <bat_line>  SET CUSTOMIZATION_DIR=</bat_line>
+
+      <bat_line> ) ELSE ( </bat_line>
+      <bat_line>  SET CUSTOMIZATION_DIR=-Dcustomization.dir="%RX_CUSTOM_DIR%"</bat_line>
+      <bat_line>
+        )
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF "%cmd_extended_debug_info%" == "yes" (</bat_line>
+      <bat_line>  SET RDEBUG=-d</bat_line>
+
+      <bat_line>) ELSE (</bat_line>
+      <bat_line>SET RDEBUG=</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>call ant %COMMAND_LINE_PARAM_ALL% dita2pdf3 %RDEBUG% -Dargs.input="%DITA_IN_FILE%" -Doutput.dir="%DSDK_PARAM_outdir%"   %CUSTOMIZATION_DIR%  -Dargs.xmfo.formtter=antenna  %ANT_PARAM_ALL% %RX_ANY%</bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>echo on</bat_line>
+      <bat_line>call "%LOGFILE_DIR%"\set_fo_src.bat</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line>IF EXIST "%DEST_FILE%" ( </bat_line>
+      <bat_line>
+        DEL /F /Q "%DEST_FILE%"
+      </bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF NOT EXIST "%ANTENNA_EXE%" ( </bat_line>
+      <bat_line>echo ERROR: Antenna House XSL Formatter could not be found. Please install this applicaton. If XSL Formatter is already installed, ensure XMetaL is configured to identify where the application is installed.</bat_line>
+      <bat_line>echo %cmd_log_failed_text%</bat_line>
+      <bat_line>goto L2</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF "%ANTENNA_PARAM%" == "" (</bat_line>
+      <bat_line>  SET ANTENNA_PARAM_LINE=</bat_line>
+
+      <bat_line> ) ELSE ( </bat_line>
+      <bat_line>  SET ANTENNA_PARAM_LINE=%ANTENNA_PARAM%</bat_line>
+      <bat_line>
+        )
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>call "%ANTENNA_EXE%" -d  "%FO_FILE%" -o "%DEST_FILE%" %ANTENNA_PARAM_LINE% </bat_line>
+
+      <bat_line>
+      </bat_line>
+      <bat_line>:L2</bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf3.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf3.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf3.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_FC327FA208BE43C4A906C1074EF636AA">
+
+    <config_title>XMetaL Enhanced PDF via RenderX XEP and Acrobat Distiller</config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>PDF</value>
+      </instruction>
+
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+
+
+
+      <instruction id="131">
+        <name xm_cmd="1">cmd_xft_options_form</name>
+        <value>AddDlvTypePDFRX.xft</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>pdf_out</value>
+      </instruction>
+      <instruction id="133">
+        <name xm_cmd="1">cmd_log_succeeded_text</name>
+        <value>BUILD SUCCESSFUL</value>
+      </instruction>
+      <instruction id="134">
+        <name xm_cmd="1">cmd_log_failed_text</name>
+        <value>BUILD FAILED</value>
+      </instruction>
+
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>pdf3</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+    <instruction id="100"><name xm_cmd="0">ANT_PARAM_generate.copy.outer</name><value>"3"</value></instruction></instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        call %1
+
+      </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (
+
+      </bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>) </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+
+      <bat_line> </bat_line>
+      <bat_line>IF "%RX_CUSTOM_DIR%" == "" (</bat_line>
+      <bat_line>  SET CUSTOMIZATION_DIR=</bat_line>
+
+      <bat_line> ) ELSE ( </bat_line>
+      <bat_line>  SET CUSTOMIZATION_DIR=-Dcustomization.dir="%RX_CUSTOM_DIR%"</bat_line>
+      <bat_line>
+        )
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF "%cmd_extended_debug_info%" == "yes" (</bat_line>
+      <bat_line>  SET RDEBUG=-d</bat_line>
+
+      <bat_line>) ELSE (</bat_line>
+      <bat_line>SET RDEBUG=</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>call ant %COMMAND_LINE_PARAM_ALL% dita2pdf3 %RDEBUG% -Dargs.input="%DITA_IN_FILE%" -Doutput.dir="%DSDK_PARAM_outdir%"   %CUSTOMIZATION_DIR%  -Dargs.xmfo.formtter=distiller %ANT_PARAM_ALL% %RX_ANY%</bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>echo on</bat_line>
+      <bat_line>call %LOGFILE_DIR%\set_ps_src.bat</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF "%DISTILLER_PARAM%" == "" (</bat_line>
+      <bat_line>  SET DISTILLER_PARAM_LINE=</bat_line>
+
+      <bat_line> ) ELSE ( </bat_line>
+      <bat_line>  SET DISTILLER_PARAM_LINE=%DISTILLER_PARAM%</bat_line>
+      <bat_line>
+        )
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line>IF EXIST "%DEST_FILE%" ( </bat_line>
+      <bat_line>
+        DEL /F /Q "%DEST_FILE%"
+      </bat_line>
+      <bat_line>)</bat_line>
+      <bat_line> </bat_line>
+      <bat_line></bat_line>
+      <bat_line></bat_line>
+      <bat_line>SET DISTILLER_EXE=%DISTILLER_DIR%\acrodist.exe</bat_line>
+      <bat_line></bat_line>
+      <bat_line>SET DISTILLER_LOG=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%.log</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF NOT EXIST "%DISTILLER_EXE%" ( </bat_line>
+      <bat_line>echo ERROR: Adobe Acrobat Distiller could not be found. Please install this application. If Acrobat Distiller is already installed, ensure XMetaL is configured to identify where the application is installed.</bat_line>
+      <bat_line>echo %cmd_log_failed_text%</bat_line>
+      <bat_line>goto L1</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>call "%DISTILLER_EXE%" /N /Q   /O "%DEST_FILE%" "%PS_FILE%" %DISTILLER_PARAM_LINE% </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        :L1
+      </bat_line>
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf3.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf3.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_pdf3.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF EXIST "%DISTILLER_LOG%" (</bat_line>
+      <bat_line>echo *********** Distillr Log File content :</bat_line>
+      <bat_line>TYPE "%DISTILLER_LOG%"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+      </bat_line>
+    </bat_content>
+
+  </config>
+  <config id="DITA142_8176D4E949A144BD8D668B453B4E9C72">
+
+    <config_title>WebHelp</config_title>
+
+    <title_in>XMetaL and bat processor "Name - Value" parameters</title_in>
+
+    <instructions_table>
+
+      <instruction id="102">
+        <name xm_cmd="1">cmd_generated_file_extension</name>
+        <value>HTML</value>
+      </instruction>
+
+
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_ditaext</name>
+        <value>xml</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_transtype</name>
+        <value>webhelp</value>
+      </instruction>
+
+      <instruction id="100">
+        <name xm_cmd="0">DSDK_PARAM_outdir</name>
+        <value>webhelp_out</value>
+      </instruction>
+      <instruction id="101">
+        <name xm_cmd="1">cmd_disable_xmetal_preprocessing</name>
+        <value>yes</value>
+      </instruction>
+      <instruction id="131">
+        <name xm_cmd="1">cmd_xft_options_form</name>
+        <value>AddDlvTypeXHTML.xft</value>
+      </instruction>
+      <instruction id="100">
+        <name xm_cmd="0">ANT_PARAM_generate.copy.outer</name>
+        <value>"3"</value>
+      </instruction>
+    </instructions_table>
+    <bat_content>
+      <bat_title>BAT file instructions</bat_title>
+
+      <bat_line>
+      </bat_line>
+      <bat_line>
+        call %1
+
+      </bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>
+        IF /I EXIST "%DITAVAL_PATH_BACK_SLASH%" (
+
+      </bat_line>
+      <bat_line> echo *********** File content : %DITAVAL_PATH_BACK_SLASH%</bat_line>
+      <bat_line>TYPE "%DITAVAL_PATH_BACK_SLASH%"</bat_line>
+      <bat_line> echo ***********************************************************************</bat_line>
+      <bat_line>) </bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        pushd  "%DITA_OT_DIR%"
+
+      </bat_line>
+      <bat_line>
+      </bat_line>
+      <bat_line>set DITA_IN_FILE=%IN_FILE_DIR%%IN_FILE_NAME_ONLY%%IN_FILE_EXT%</bat_line>
+
+      <bat_line></bat_line>
+      <bat_line>IF "%cmd_extended_debug_info%" == "yes" (</bat_line>
+      <bat_line>  SET RDEBUG=-d</bat_line>
+
+      <bat_line>) ELSE (</bat_line>
+      <bat_line>SET RDEBUG=</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line>call ant  dita2webhelp -Dargs.input="%DITA_IN_FILE%" -Doutput.dir="%DSDK_PARAM_outdir%"  %ANT_PARAM_ALL% %RDEBUG%</bat_line>
+
+      <bat_line>
+      </bat_line>
+      <bat_line> set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\%IN_FILE_NAME_ONLY%.html</bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF NOT EXIST "%SRC_FILE%" (</bat_line>
+      <bat_line>	set SRC_FILE=%OUT_FILE_DIR_BACK_SLASH%\index.html</bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+      <bat_line>
+        set DEST_FILE=%OUT_FILE_DIR_BACK_SLASH%\%OUT_FILE_NAME_ONLY%%OUT_FILE_EXT%
+
+      </bat_line>
+      <bat_line></bat_line>
+      <bat_line>IF /I NOT "%DEST_FILE%" == "%SRC_FILE%" (</bat_line>
+      <bat_line>
+        move /Y "%SRC_FILE%" "%DEST_FILE%"
+      </bat_line>
+      <bat_line>)</bat_line>
+      <bat_line></bat_line>
+
+
+      <bat_line>IF EXIST "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_webhelp.log" (</bat_line>
+      <bat_line>echo *********** File content : %LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_webhelp.log</bat_line>
+      <bat_line>TYPE "%LOGFILE_DIR%\%IN_FILE_NAME_ONLY%_webhelp.log"</bat_line>
+      <bat_line>echo ***************************************************************</bat_line>
+      <bat_line>)</bat_line>
+
+      <bat_line></bat_line>
+    </bat_content>
+
+  </config>  
+  </print>
+

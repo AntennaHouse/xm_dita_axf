@@ -16,6 +16,8 @@ File lists
  |
  +-- build_dita2pdf.xml
  |
+ +-- print_dita142.xml
+ |
  +--[xsl]
  |    |
  |    +-- dita2fo-shell_axf.xsl
@@ -82,7 +84,10 @@ If you are using Linux, for example:
 
 Attached axfo_setting.xml is a sample for DITA Open Toolkit specialized setting.
 
-5. Move the current directory to the Open Toolkit home directory. Invoke ant from command-line specifying target like following.
+5. For XMetaL users, make a backup of your print_dita142.xml and replace it with the version included in this archive. The default location for this file is:
+C:\Program Files\XMetaL 6.0\Author\DITA\XACs\shared\renditions\print_dita142.xml
+
+6. Move the current directory to the Open Toolkit home directory. Invoke ant from command-line specifying target like following.
 
  ant -f build_demo.xml demo.book
 
