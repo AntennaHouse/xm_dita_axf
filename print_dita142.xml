@@ -1570,7 +1570,7 @@
         )
       </bat_line>
       <bat_line></bat_line>
-      <bat_line>call "%ANTENNA_EXE%" -d  "%FO_FILE%" -o "%DEST_FILE%" %ANTENNA_PARAM_LINE% </bat_line>
+      <bat_line>call "%ANTENNA_EXE%" -d  "%FO_FILE%" -o "%DEST_FILE%" -x 3 %ANTENNA_PARAM_LINE% </bat_line>
 
       <bat_line>
       </bat_line>
