@@ -46,6 +46,7 @@ See the accompanying license.txt file for applicable licenses.
         <xsl:attribute name="color">blue</xsl:attribute>
         <xsl:attribute name="font-size">10pt</xsl:attribute>
 	<!-- <xsl:attribute name="link-back">true</xsl:attribute> -->
+	<xsl:attribute name="page-number-treatment">link</xsl:attribute>
     </xsl:attribute-set>
 
     <xsl:attribute-set name="__index__letter-group">
