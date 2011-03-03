@@ -50,7 +50,7 @@ See the accompanying license.txt file for applicable licenses.
         <xsl:attribute name="font-size">12pt</xsl:attribute>
         <xsl:attribute name="font-weight">bold</xsl:attribute>
         <xsl:attribute name="space-after.optimum">0.1in</xsl:attribute>
-        <xsl:attribute name="keep-with-next.within-page">always</xsl:attribute>
+        <xsl:attribute name="keep-with-next.within-column">always</xsl:attribute>
     </xsl:attribute-set>
 
     <xsl:attribute-set name="index.entry">
