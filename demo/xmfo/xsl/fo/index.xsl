@@ -530,7 +530,7 @@ See the accompanying license.txt file for applicable licenses.
             </fo:inline>
             <xsl:if test="$idxs">
                 <xsl:for-each select="$idxs">
-                    <fo:inline id="{@value}"/>
+                    <fo:inline id="{generate-id(.)}"/>
                 </xsl:for-each>
             </xsl:if>
             <xsl:if test="not($no-page)">
