@@ -15,9 +15,9 @@
             </xsl:call-template>
         </fo:block>
         
-        <rx:flow-section column-count="2" column-gap="27pt">
+        <fo:block-container column-count="2" column-gap="27pt">
             <xsl:apply-templates select="//opentopic-index:index.groups" mode="index-postprocess"/>
-        </rx:flow-section>
+        </fo:block-container>
         
     </xsl:template>
 </xsl:stylesheet>
